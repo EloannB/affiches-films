@@ -87,22 +87,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search)
-            const movieIndex = urlParams.get('index')
-        
+            const movieId = urlParams.get('id')
 
-        fetch("data/movies.json")
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTdjYzc0OTU1MTQ5YmUyM2RmODM4MTNmMjAxYTRlOCIsInN1YiI6IjYyODM5OGJiZWM0NTUyMTAzMmE5NTcxMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.REF4Oi-K06F7Jq8LolG5vPQtyeiGk3nBFdDyL1FLq7E'
+                }
+            };
+            fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=fr-Fr` , options)
             .then(response => response.json())
             .then(data => {
 
-                document.getElementById('movie-title').textContent = data.results[movieIndex].title
-                document.getElementById('movie-release-date').textContent = `Date de sortie : ${data.results[movieIndex].release_date}`
-                document.getElementById('movie-overview').textContent = data.results[movieIndex].overview
-                document.getElementById('movie-popularity').textContent = `Popularité : ${data.results[movieIndex].popularity}`
-                document.getElementById('movie-vote-average').textContent = `Note moyenne : ${data.results[movieIndex].vote_average}`
-                document.getElementById('movie-vote-count').textContent = `Nombre de votes : ${data.results[movieIndex].vote_count}`
-                document.getElementById('movie-poster').src = `https://image.tmdb.org/t/p/original${data.results[movieIndex].poster_path}`
+                document.getElementById('movie-title').textContent = data.title
+                document.getElementById('movie-release-date').textContent = `Date de sortie : ${data.release_date}`
+                document.getElementById('movie-overview').textContent = data.overview
+                document.getElementById('movie-popularity').textContent = `Popularité : ${data.popularity}`
+                document.getElementById('movie-vote-average').textContent = `Note moyenne : ${data.vote_average}`
+                document.getElementById('movie-vote-count').textContent = `Nombre de votes : ${data.vote_count}`
+                document.getElementById('movie-poster').src = `https://image.tmdb.org/t/p/original${data.poster_path}`
             }
-            )
+        )
         })
     </script>
 
