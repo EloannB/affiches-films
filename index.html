@@ -13,6 +13,8 @@
 
 <body>
 
+
+
   <div>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,36 +30,19 @@
                 <a class="nav-link" href="index.html">Accueil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Films populaires</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Nouveautés</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Catégories</a>
+                <a id="navPop" class="nav-link" href="#">Films populaires</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-  </div>
-<div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
+
+    <div class="ImageBackgroundWrap Background-fixed" style="Background-image: url(https://images.pexels.com/photos/4201333/pexels-photo-4201333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)">
+      <div class="ImageInnerWrap">
+      <div class="TextBackground">
+
+
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -67,7 +52,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div>
+  </div>
   <div class="text-center mt-3">
     <input id="inputMovie" class="border border-3" type="text">
     <button id="btnSearch" class="btn btn-secondary">Rechercher</button>
@@ -76,12 +61,12 @@
 
 
   <div class="container movie-list mx-auto row justify-content-evenly">
-<!-- ici les films générés en script -->
+    <!-- ici les films générés en script -->
   </div>
 
-  <div id="carouselExample" class="carousel slide">
+  <div id="carouselExample" class="carousel slide col-10 col-lg-3 m-3 mx-auto">
     <div id="carouselNew" class="carousel-inner">
-     <!-- ici les items carousel -->
+      <!-- ici les items carousel -->
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -93,7 +78,6 @@
     </button>
   </div>
 
-   
   <footer class="footer mt-auto">
 
     <ul class="social-icon">
