@@ -1,6 +1,6 @@
 const movieList = document.querySelector(".movie-list")
 const carouselNew = document.querySelector("#carouselNew")
-const buttonSlide = document.querySelector("#buttonSlide")
+
 document.getElementById('btnSearch').addEventListener('click', function () {
 
   movieList.innerHTML = ""
@@ -61,22 +61,19 @@ fetch('https://api.themoviedb.org/3/movie/now_playing?language=fr-FR&page=1', op
 
     let index = 0
     data.results.forEach(function (movie) {
-      const carouselButton = document.createElement('div')
-      carouselButton.innerHTML = `
-<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="${index}" class="active" aria-current="true""></button>
 
-`
-      buttonSlide.appendChild(carouselButton)
+
 
       const carouselItem = document.createElement('div')
       carouselItem.innerHTML = `
-      
       <div class="carousel-item ${index == 0 ? "active" : ""}">
       <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>${movie.title}</h5>
-        <p>Nouveautés</p>
-      </div>
+      <h5>${movie.title}</h5>
+      <p>Nouveautés</p>
+    </div>
+    </div>
+      
   
       `
       carouselNew.appendChild(carouselItem)
