@@ -1,5 +1,6 @@
 const movieList = document.querySelector(".movie-list")
-
+const carouselNew = document.querySelector("#carouselNew")
+const buttonSlide = document.querySelector("#buttonSlide")
 document.getElementById('btnSearch').addEventListener('click', function () {
 
   movieList.innerHTML = ""
@@ -18,7 +19,7 @@ document.getElementById('btnSearch').addEventListener('click', function () {
   };
 
   let movieSearch = document.querySelector('#inputMovie').value
-  
+
   fetch(`https://api.themoviedb.org/3/search/movie?query=${movieSearch}&include_adult=false&language=fr-FR&page=1`, options)
     .then(response => response.json())
     .then(data => {
@@ -45,3 +46,41 @@ document.getElementById('btnSearch').addEventListener('click', function () {
     })
 
 })
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZTRkYzEzNTcyNjkwZWNhYjAxODk3MTJiMzFjNzc1YSIsInN1YiI6IjY1NDBiMjc2MzU4MThmMDBlMzkyMWRjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PepigEJGzCdele1-_m6hosuciDxUByePLeqhOhYCny4'
+  }
+};
+
+fetch('https://api.themoviedb.org/3/movie/now_playing?language=fr-FR&page=1', options)
+  .then(response => response.json())
+  .then(data => {
+
+    let index = 0
+    data.results.forEach(function (movie) {
+      const carouselButton = document.createElement('div')
+      carouselButton.innerHTML = `
+<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="${index}" class="active" aria-current="true""></button>
+
+`
+      buttonSlide.appendChild(carouselButton)
+
+      const carouselItem = document.createElement('div')
+      carouselItem.innerHTML = `
+      
+      <div class="carousel-item ${index == 0 ? "active" : ""}">
+      <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>${movie.title}</h5>
+        <p>Nouveautés</p>
+      </div>
+  
+      `
+      carouselNew.appendChild(carouselItem)
+      index++
+    })
+  })
+
